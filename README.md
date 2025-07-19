@@ -1,8 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI Marketplace
+
+AI Marketplace is a Next.js 15 app that provides a curated marketplace of AI-powered tools, including text generation, code assistance, image analysis, data processing, web scraping, chat, summarization, and SEO analysis. Each tool is accessible via a modern web UI and powered by OpenAI's GPT-4o.
+
+## Features
+
+- **Smart Text Generator**: Generate high-quality content for blogs, emails, and marketing copy.
+- **Code Assistant**: Get help with coding, debugging, and code optimization.
+- **Image Analyzer**: Analyze images and extract detailed information and insights.
+- **Data Processor**: Process and analyze data with AI-powered insights.
+- **Web Scraper**: Extract and summarize information from websites.
+- **Chat Assistant**: Conversational AI for support and queries.
+- **Summary Generator**: Generate concise summaries of input text.
+- **SEO Analyzer**: Analyze SEO performance and get improvement suggestions.
+
+## Project Structure
+
+- `app/` — Next.js app directory (pages, API routes, global styles, layout)
+- `components/` — Reusable React components (UI, modals, tool windows)
+- `config/tools.json` — Tool metadata and configuration
+- `lib/` — Utility and tool configuration logic
+- `tools/` — Tool handler implementations (backend logic for each AI tool)
+- `public/` — Static assets (SVGs, icons)
+- `tailwind.config.ts` — Tailwind CSS configuration
 
 ## Getting Started
 
-First, run the development server:
+### 1. Install Dependencies
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+### 2. Run the Development Server
 
 ```bash
 npm run dev
@@ -10,27 +43,38 @@ npm run dev
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Build for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Usage
 
-To learn more about Next.js, take a look at the following resources:
+- Browse and search for AI tools on the homepage.
+- Click "Try Now" on any tool card to open its modal and interact with the tool.
+- Some tools (like Image Analyzer) require file uploads; others accept text or URLs.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Customization
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Add or modify tools in `tools/` and update their metadata in `config/tools.json`.
+- UI components can be customized in `components/`.
+- Tailwind CSS is used for styling; global styles are in `app/globals.css`.
 
-## Deploy on Vercel
+## Tech Stack
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Next.js 15 (App Router)
+- React 19
+- Tailwind CSS
+- OpenAI SDK
+- Shadcn UI
+- TypeScript
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+
+MIT

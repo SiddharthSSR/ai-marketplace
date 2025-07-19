@@ -1,0 +1,82 @@
+[
+  {
+    "id": "text-generator",
+    "name": "Smart Text Generator",
+    "description": "Generate high-quality content for blogs, emails, and marketing copy",
+    "category": "Content",
+    "icon": "FileText",
+    "color": "bg-blue-500",
+    "features": ["Blog posts", "Email templates", "Social media content"],
+    "pricing": "Free"
+  },
+  {
+    "id": "code-assistant",
+    "name": "Code Assistant",
+    "description": "Get help with coding, debugging, and code optimization",
+    "category": "Development",
+    "icon": "Zap",
+    "color": "bg-green-500",
+    "features": ["Code generation", "Bug fixing", "Code review"],
+    "pricing": "Free"
+  },
+  {
+    "id": "image-analyzer",
+    "name": "Image Analyzer",
+    "description": "Analyze images and extract detailed information and insights",
+    "category": "Vision",
+    "icon": "Image",
+    "color": "bg-purple-500",
+    "features": ["Object detection", "Text extraction", "Scene analysis"],
+    "pricing": "Free"
+  },
+  {
+    "id": "data-processor",
+    "name": "Data Processor",
+    "description": "Process and analyze data with AI-powered insights",
+    "category": "Analytics",
+    "icon": "Calculator",
+    "color": "bg-orange-500",
+    "features": ["Data cleaning", "Pattern analysis", "Predictions"],
+    "pricing": "Free"
+  },
+  {
+    "id": "web-scraper",
+    "name": "Smart Web Scraper",
+    "description": "Extract and summarize information from websites intelligently",
+    "category": "Automation",
+    "icon": "Globe",
+    "color": "bg-cyan-500",
+    "features": ["Content extraction", "Data summarization", "Structured output"],
+    "pricing": "Free"
+  },
+  {
+    "id": "chat-assistant",
+    "name": "Chat Assistant",
+    "description": "Intelligent conversational AI for customer support and general queries",
+    "category": "Communication",
+    "icon": "MessageSquare",
+    "color": "bg-pink-500",
+    "features": ["Natural conversation", "Context awareness", "Multi-language"],
+    "pricing": "Free"
+  },
+  {
+    "id": "summary-generator",
+    "name": "Summary Generator",
+    "description": "Generate a concise summary of any input text",
+    "category": "Content",
+    "icon": "FileText",
+    "color": "bg-yellow-500",
+    "features": ["Text summarization", "Bullet points", "Insight extraction"],
+    "pricing": "Free"
+  },
+  {
+    "id": "seo-analyzer",
+    "name": "SEO Analyzer",
+    "description": "Analyze SEO performance and suggest improvements",
+    "category": "Marketing",
+    "icon": "Search",
+    "color": "bg-indigo-500",
+    "features": ["Keyword analysis", "Meta suggestions", "Content tips"],
+    "pricing": "Free"
+  }
+]
