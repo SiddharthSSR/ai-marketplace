@@ -5,6 +5,7 @@ import { Search, Sparkles } from "lucide-react"
 import { ToolModal } from "@/components/tool-modal"
 import ToolWindow from "@/components/ToolWindow"
 import { getAllTools, getUniqueCategories } from "@/lib/tool-config"
+import { runPlannerAgent } from "@/lib/agents/planner"
 
 const aiTools = getAllTools()
 const categories = getUniqueCategories()
@@ -13,6 +14,9 @@ export default function AIMarketplace() {
   const [selectedCategory, setSelectedCategory] = useState("All")
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedTool, setSelectedTool] = useState<typeof aiTools[0] | null>(null)
+  const [agentLogs, setAgentLogs] = useState<string[]>([])
+  const [plannerTask, setPlannerTask] = useState("")
+  const [isRunning, setIsRunning] = useState(false)
 
   const filteredTools = aiTools.filter((tool) => {
     const matchesCategory = selectedCategory === "All" || tool.category === selectedCategory
@@ -21,6 +25,25 @@ export default function AIMarketplace() {
       tool.description.toLowerCase().includes(searchQuery.toLowerCase())
     return matchesCategory && matchesSearch
   })
+
+  const handlePlannerClick = async () => {
+    if (!plannerTask.trim()) {
+      setAgentLogs(["⚠️ Please enter a task for the Planner Agent."])
+      return
+    }
+
+    setAgentLogs([])
+    setIsRunning(true)
+
+    try {
+      const { logs, finalResult } = await runPlannerAgent(plannerTask.trim())
+      setAgentLogs(logs)
+    } catch (err) {
+      setAgentLogs((prev) => [...prev, `❌ Error: ${(err as Error).message}`])
+    }
+
+    setIsRunning(false)
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
@@ -41,12 +64,40 @@ export default function AIMarketplace() {
 
       <div className="max-w-7xl mx-auto px-4 py-8">
         {/* Hero Section */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-8">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Discover Powerful AI Tools</h2>
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 mb-6 max-w-2xl mx-auto">
             Access cutting-edge AI capabilities through our curated marketplace of intelligent tools.
           </p>
+          <div className="flex flex-col items-center space-y-3 max-w-xl mx-auto">
+            <input
+              type="text"
+              placeholder="Enter your task (e.g., summarize an article and translate to Spanish)"
+              value={plannerTask}
+              onChange={(e) => setPlannerTask(e.target.value)}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+            />
+            <button
+              onClick={handlePlannerClick}
+              className="px-6 py-2 bg-indigo-600 text-white text-sm font-medium rounded hover:bg-indigo-700 transition-colors disabled:opacity-50"
+              disabled={isRunning}
+            >
+              {isRunning ? "Running Planner Agent..." : "Run Planner Agent"}
+            </button>
+          </div>
         </div>
+
+        {/* Agent Logs */}
+        {agentLogs.length > 0 && (
+          <div className="bg-white shadow rounded p-4 mb-12 max-w-3xl mx-auto">
+            <h3 className="text-lg font-semibold text-gray-800 mb-2">🧠 Agent Logs</h3>
+            <div className="text-sm text-gray-700 space-y-1 max-h-64 overflow-y-auto">
+              {agentLogs.map((log, index) => (
+                <div key={index} className="border-l-4 border-indigo-500 pl-3 py-1">{log}</div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Search and Filters */}
         <div className="mb-8 space-y-4">
